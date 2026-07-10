@@ -717,7 +717,8 @@ footer p{
         position:fixed;
         top:80px;
         right:-100%;
-        width:250px;
+        width:100%px;
+        max-width:250px;
         height:calc(100vh - 80px);
         background:#fff;
         display:flex;
@@ -821,15 +822,66 @@ footer p{
 
 
 /* ---------- Redmi A1+ / 320-350px ---------- */
-
 @media (max-width:350px){
 
+    body{
+        overflow-x:hidden;
+    }
+
+    html{
+        overflow-x:hidden;
+    }
+
+    header{
+        width:100%;
+        overflow:hidden;
+    }
+
     nav{
-        padding:0 12px;
+        width:100%;
+        padding:0 10px;
     }
 
     .logo h2{
         font-size:16px;
+    }
+
+    .menu-btn{
+        margin-left:auto;
+    }
+
+    .nav-links{
+        position:fixed;
+        top:80px;
+        right:-100%;
+        width:100%;
+        height:calc(100vh - 80px);
+        padding-top:30px;
+        overflow-y:auto;
+    }
+
+    .nav-links.active{
+        right:0;
+    }
+
+    .hero{
+        padding:120px 15px 60px;
+    }
+
+    .hero-content{
+        flex-direction:column-reverse;
+        gap:30px;
+        text-align:center;
+    }
+
+    .hero-image{
+        width:100%;
+    }
+
+    .hero-image img{
+        width:100%;
+        max-width:180px;
+        margin:auto;
     }
 
     .hero-text h1{
@@ -840,19 +892,34 @@ footer p{
         font-size:14px;
     }
 
-    .hero-image img{
-        max-width:180px;
+    .hero-btn{
+        flex-direction:column;
+        align-items:center;
     }
 
     .btn,
     .btn2{
         width:100%;
         max-width:200px;
-        padding:13px 20px;
     }
 
-    section h2{
-        font-size:25px;
+    .contact-wrapper{
+        display:flex;
+        flex-direction:column;
+        gap:25px;
+    }
+
+    .contact-info,
+    .contact-form{
+        width:100%;
+    }
+
+    .contact-form{
+        margin-top:10px;
+    }
+
+    section{
+        padding:70px 15px;
     }
 
 }
