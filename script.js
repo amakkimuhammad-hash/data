@@ -39,3 +39,26 @@ themeBtn.addEventListener("click", function () {
     document.body.style.backgroundColor = "black";
     document.body.style.color = "white";
 });
+const form = document.querySelector("form");
+
+// Change this to your own password
+const SECRET_PASSWORD = "Makki2026";
+
+form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const username = document.querySelector('input[type="text"]').value.trim();
+    const password = document.querySelector('input[type="password"]').value;
+
+    if (username === "" || password === "") {
+        alert("Please fill in all fields.");
+        return;
+    }
+
+    if (password === SECRET_PASSWORD) {
+        alert("Login successful!");
+        window.location.href = "plans.html";
+    } else {
+        alert("Incorrect password!");
+    }
+});
