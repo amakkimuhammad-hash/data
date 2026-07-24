@@ -1,64 +1,171 @@
+/*=========================================
+            MOBILE MENU
+=========================================*/
+
 const menuBtn = document.querySelector(".menu-btn");
-
 const navLinks = document.querySelector(".nav-links");
-menuBtn.addEventListener("click", function () {
-    navLinks.classList.toggle("active");
-});
-const menuLinks = document.querySelectorAll(".nav-links a");
 
-menuLinks.forEach(link => {
-    link.addEventListener("click", () => {
-        navLinks.classList.remove("active");
+if (menuBtn && navLinks) {
+
+    menuBtn.addEventListener("click", () => {
+        menuBtn.classList.toggle("active");
+        navLinks.classList.toggle("active");
     });
-});
-const button = document.getElementById("changeBtn");
 
-button.onclick = function () {
-    document.getElementById("message").innerHTML = "JavaScript is working!";
-};
-const form = document.querySelector("#contactForm");
-const error = document.querySelector("#error");
+    document.querySelectorAll(".nav-links a").forEach(link => {
+        link.addEventListener("click", () => {
+            menuBtn.classList.remove("active");
+            navLinks.classList.remove("active");
+        });
+    });
 
-form.addEventListener("submit", (e) => {
+}
 
-    e.preventDefault();
 
-    const name = document.querySelector("#name").value;
-    const email = document.querySelector("#email").value;
+/*=========================================
+        CHANGE MESSAGE BUTTON
+=========================================*/
 
-    if (name === "" || email === "") {
-        error.textContent = "Please fill all fields";
-    } else {
-        error.textContent = "Form submitted successfully";
-    }
+const changeBtn = document.getElementById("changeBtn");
+const message = document.getElementById("message");
 
-});
+if (changeBtn && message) {
+
+    changeBtn.addEventListener("click", () => {
+        message.textContent = "JavaScript is working!";
+    });
+
+}
+
+
+/*=========================================
+            CONTACT FORM
+=========================================*/
+
+const contactForm = document.getElementById("contactForm");
+const error = document.getElementById("error");
+
+if (contactForm && error) {
+
+    contactForm.addEventListener("submit", function (e) {
+
+        e.preventDefault();
+
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+
+        if (name === "" || email === "") {
+
+            error.style.color = "red";
+            error.textContent = "Please fill in all fields.";
+
+        } else {
+
+            error.style.color = "green";
+            error.textContent = "Form submitted successfully!";
+
+            contactForm.reset();
+        }
+
+    });
+
+}
+
+
+/*=========================================
+            DARK THEME
+=========================================*/
+
 const themeBtn = document.getElementById("themeBtn");
 
-themeBtn.addEventListener("click", function () {
-    document.body.style.backgroundColor = "black";
-    document.body.style.color = "white";
-});
-const form = document.querySelector("form");
+if (themeBtn) {
 
-// Change this to your own password
-const SECRET_PASSWORD = "Makki2026";
+    themeBtn.addEventListener("click", () => {
 
-form.addEventListener("submit", function(e) {
-    e.preventDefault();
+        document.body.style.backgroundColor = "#000";
+        document.body.style.color = "#fff";
 
-    const username = document.querySelector('input[type="text"]').value.trim();
-    const password = document.querySelector('input[type="password"]').value;
+    });
 
-    if (username === "" || password === "") {
-        alert("Please fill in all fields.");
-        return;
-    }
+}
 
-    if (password === SECRET_PASSWORD) {
-        alert("Login successful!");
+
+/*=========================================
+            LOGIN FORM
+=========================================*/
+
+const loginForm = document.getElementById("loginForm");
+
+if (loginForm) {
+
+    const SECRET_PASSWORD = "Makki2026"; // Change this password
+
+    loginForm.addEventListener("submit", function (e) {
+
+        e.preventDefault();
+
+        const username = loginForm.querySelector('input[type="text"]').value.trim();
+        const password = loginForm.querySelector('input[type="password"]').value;
+
+        if (username === "" || password === "") {
+
+            alert("Please fill in all fields.");
+            return;
+
+        }
+
+        if (password === SECRET_PASSWORD) {
+
+            alert("Login successful!");
+
+            window.location.href = "plans.html";
+
+        } else {
+
+            alert("Incorrect password!");
+
+        }
+
+    });
+
+}
+
+
+/*=========================================
+            SIGN-UP FORM
+=========================================*/
+
+const signupForm = document.getElementById("signupForm");
+
+if (signupForm) {
+
+    signupForm.addEventListener("submit", function (e) {
+
+        e.preventDefault();
+
+        const inputs = signupForm.querySelectorAll("input");
+
+        let complete = true;
+
+        inputs.forEach(input => {
+
+            if (input.value.trim() === "") {
+                complete = false;
+            }
+
+        });
+
+        if (!complete) {
+
+            alert("Please complete all fields.");
+            return;
+
+        }
+
+        alert("Account created successfully!");
+
         window.location.href = "plans.html";
-    } else {
-        alert("Incorrect password!");
-    }
-});
+
+    });
+
+}
