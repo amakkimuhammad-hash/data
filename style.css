@@ -654,7 +654,7 @@ footer p{
         position:fixed;
         top:80px;
         right:-100%;
-        width:100%px;
+        width:100%;
         max-width:250px;
         height:calc(100vh - 80px);
         background:#fff;
